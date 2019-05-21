@@ -1,0 +1,11 @@
+Command used to compile in folder task1:
+javac -d build/classes src/*.java
+
+... to run ...
+java -classpath build/classes/ PersonRunner
+
+Output:
+Bob Jackson 23.09.1995
+
+Generate Javadocs:
+javadoc -d docs src/*.java
