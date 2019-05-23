@@ -1,3 +1,6 @@
 task1/LAB_1/build/
 
 task1/LAB_1/docs/
+
+*.class
+task2/SomeFunctionDocs/
