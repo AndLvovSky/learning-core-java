@@ -17,12 +17,7 @@ public class MyLinkedList {
 	}
 
 	public void add(Integer e) {
-		if (size == 0) {
-			tail = head = new Element(e, null, null);
-			return;
-		}
-		tail.next = new Element(e, tail, null);
-		tail = tail.next;
+		addLast(e);
 	}
 
 	public void add(int index, Integer element) throws RuntimeException {
