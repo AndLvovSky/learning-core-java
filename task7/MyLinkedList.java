@@ -130,7 +130,7 @@ public class MyLinkedList implements MyList, Queue, Stack {
 	public Object remove(int index) {
 		if (index == 0) {
 			return removeFirst();
-		} else if (index == size) {
+		} else if (index == size - 1) {
 			return removeLast();
 		} 
 		if (index > size || index < 0) {
