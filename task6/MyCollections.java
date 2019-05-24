@@ -113,4 +113,21 @@ public class MyCollections {
 			swap(list, i, list.size() - i - 1);
 		}
 	}
+
+	// O(logn)
+	public static int binarySearch(MyArrayList list, Integer key) {
+		int l = 0, r = list.size() - 1;
+		while (l < r) {
+			int mid = (l + r + 1) / 2;
+			if (key < (Integer)list.get(mid)) {
+				r = mid - 1;
+			} else {
+				l = mid;
+			}
+		}
+		if ((Integer)list.get(l) == key) {
+			return l;
+		}
+		return -l - 1;
+	}
 }

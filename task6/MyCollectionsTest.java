@@ -110,10 +110,29 @@ public class MyCollectionsTest {
 		print(alist);
 	}
 
+	private static void testBinarySearch() {
+		System.out.println("test binary search");
+		MyArrayList list = new MyArrayList();
+		list.add(1);
+		list.add(3);
+		list.add(4);
+		list.add(6);
+		list.add(8);
+		list.add(10);
+		list.add(15);
+		list.add(20);
+		print(list);
+		System.out.println("position of 4 " + 
+			MyCollections.binarySearch(list, 4));
+		System.out.println("position of 11 " + 
+			MyCollections.binarySearch(list, 11));
+	}
+
 	public static void main(String[] args) {
 		testSwap();
 		testReverse();
 		testCopy();
 		testSort();
+		testBinarySearch();
 	}
 }

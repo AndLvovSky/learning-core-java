@@ -85,9 +85,8 @@ public class MyArrayList {
 	}
 
 	public void set(int index, Object element) {
-		int max = Math.max(index, size);
-		ensureCapacity(max + 1);
-		size = max + 1;
+		ensureCapacity(index + 1);
+		size = Math.max(size, index + 1);
 		elements[index] = element;
 	}
 
