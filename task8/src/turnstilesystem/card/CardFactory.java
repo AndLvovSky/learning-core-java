@@ -1,6 +1,6 @@
 package turnstilesystem.card;
 
-import turnstilesystem.SystemTime;
+import turnstilesystem.system.SystemInfo;
 
 public class CardFactory {
 
@@ -10,9 +10,9 @@ public class CardFactory {
 		TimeCard.Duration duration, PersonType personType) {
 		int endDate;
 		if (duration == TimeCard.Duration.LONG) {
-			endDate = SystemTime.getTime() + 30;
+			endDate = SystemInfo.time() + 30;
 		} else {
-			endDate = SystemTime.getTime() + 10;
+			endDate = SystemInfo.time() + 10;
 		}
 		return new TimeCard(endDate, nextId++, personType);
 	}
