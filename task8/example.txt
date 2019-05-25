@@ -1,0 +1,77 @@
+passed:
+-----
+true
+true
+true
+true
+-----
+true
+true
+true
+true
+-----
+true
+true
+true
+true
+-----
+true
+true
+true
+false
+-----
+false
+true
+true
+false
+-----
+false
+false
+true
+false
+
+all logs:
+[date=7, id=0, passed=true, card-type=time-card, person-type=student]
+[date=11, id=1, passed=true, card-type=count-card, person-type=adult]
+[date=12, id=2, passed=true, card-type=count-card, person-type=pupil]
+[date=12, id=3, passed=true, card-type=accumulation-card, person-type=adult]
+[date=12, id=0, passed=true, card-type=time-card, person-type=student]
+[date=16, id=1, passed=true, card-type=count-card, person-type=adult]
+[date=18, id=2, passed=true, card-type=count-card, person-type=pupil]
+[date=22, id=3, passed=true, card-type=accumulation-card, person-type=adult]
+[date=26, id=0, passed=true, card-type=time-card, person-type=student]
+[date=26, id=1, passed=true, card-type=count-card, person-type=adult]
+[date=27, id=2, passed=true, card-type=count-card, person-type=pupil]
+[date=28, id=3, passed=true, card-type=accumulation-card, person-type=adult]
+[date=30, id=0, passed=true, card-type=time-card, person-type=student]
+[date=31, id=1, passed=true, card-type=count-card, person-type=adult]
+[date=34, id=2, passed=true, card-type=count-card, person-type=pupil]
+[date=35, id=3, passed=false, card-type=accumulation-card, person-type=adult]
+[date=35, id=0, passed=false, card-type=time-card, person-type=student]
+[date=39, id=1, passed=true, card-type=count-card, person-type=adult]
+[date=39, id=2, passed=true, card-type=count-card, person-type=pupil]
+[date=43, id=3, passed=false, card-type=accumulation-card, person-type=adult]
+[date=46, id=0, passed=false, card-type=time-card, person-type=student]
+[date=50, id=1, passed=false, card-type=count-card, person-type=adult]
+[date=54, id=2, passed=true, card-type=count-card, person-type=pupil]
+[date=56, id=3, passed=false, card-type=accumulation-card, person-type=adult]
+count card logs:
+[date=11, id=1, passed=true, card-type=count-card, person-type=adult]
+[date=12, id=2, passed=true, card-type=count-card, person-type=pupil]
+[date=16, id=1, passed=true, card-type=count-card, person-type=adult]
+[date=18, id=2, passed=true, card-type=count-card, person-type=pupil]
+[date=26, id=1, passed=true, card-type=count-card, person-type=adult]
+[date=27, id=2, passed=true, card-type=count-card, person-type=pupil]
+[date=31, id=1, passed=true, card-type=count-card, person-type=adult]
+[date=34, id=2, passed=true, card-type=count-card, person-type=pupil]
+[date=39, id=1, passed=true, card-type=count-card, person-type=adult]
+[date=39, id=2, passed=true, card-type=count-card, person-type=pupil]
+[date=50, id=1, passed=false, card-type=count-card, person-type=adult]
+[date=54, id=2, passed=true, card-type=count-card, person-type=pupil]
+student card logs:
+[date=7, id=0, passed=true, card-type=time-card, person-type=student]
+[date=12, id=0, passed=true, card-type=time-card, person-type=student]
+[date=26, id=0, passed=true, card-type=time-card, person-type=student]
+[date=30, id=0, passed=true, card-type=time-card, person-type=student]
+[date=35, id=0, passed=false, card-type=time-card, person-type=student]
+[date=46, id=0, passed=false, card-type=time-card, person-type=student]
