@@ -61,7 +61,7 @@ public class MyHashMap implements MyMap {
 		}
 
 		public boolean hasNext() {
-			return n >= map.size;
+			return n < map.size;
 		}
 
 		public SimpleEntry next() {
@@ -79,6 +79,7 @@ public class MyHashMap implements MyMap {
 					i++;
 				}
 				res = map.entries[i].get(0);
+				j++;
 			}
 			n++;
 			return res;
@@ -123,6 +124,7 @@ public class MyHashMap implements MyMap {
 		this.loadFactor = loadFactor;
 	}
 
+	// O(1)
 	public void clear() {
 		entries = null;
 		size = 0;
@@ -140,29 +142,31 @@ public class MyHashMap implements MyMap {
 		return new MapIterator(this);
 	}
 
+	// *O(1)
 	public Object get(Object key) {
-		for (int i = 0; i < capacity; i++) {
-			Iterator it = entries[i].iterator();
-			while (it.hasNext()) {
-				SimpleEntry e = (SimpleEntry)it.next();
-				if (e.key == key) {
-					return e.value;
-				}
+		int i = position(key.hashCode());
+		Iterator it = entries[i].iterator();
+		while (it.hasNext()) {
+			SimpleEntry e = (SimpleEntry)it.next();
+			if (e.key.equals(key)) {
+				return e.value;
 			}
 		}
 		return null;
-}
+	}
 
+	// *O(1)
 	public boolean containsKey(Object key) {
 		return get(key) != null;
 	}
 
+	// O(size)
 	public boolean containsValue(Object value) {
 		for (int i = 0; i < capacity; i++) {
 			Iterator it = entries[i].iterator();
 			while (it.hasNext()) {
 				SimpleEntry e = (SimpleEntry)it.next();
-				if (e.value == value) {
+				if (e.value.equals(value)) {
 					return true;
 				}
 			}
@@ -170,27 +174,35 @@ public class MyHashMap implements MyMap {
 		return false;
 	}
 
+	// O(1)
 	public void put(Object key, Object value) {
+		if (containsKey(key)) {
+			((SimpleEntry)get(key)).value = value;
+			return;
+		}
 		if (size >= capacity * loadFactor) {
 			enlarge();
 		}
-		int i = key.hashCode() % capacity;
+		int i = position(key.hashCode());
 		entries[i].add(new SimpleEntry(key, value));
+		size++;
 	}
 
+	// *O(1)
 	public void remove(Object key) {
-		for (int i = 0; i < capacity; i++) {
-			ListIterator it = (ListIterator)entries[i].iterator();
-			while (it.hasNext()) {
-				SimpleEntry e = (SimpleEntry)it.next();
-				if (e.key == key) {
-					it.remove();
-					return;
-				}
+		int i = position(key.hashCode());
+		ListIterator it = (ListIterator)entries[i].iterator();
+		while (it.hasNext()) {
+			SimpleEntry e = (SimpleEntry)it.next();
+			if (e.key.equals(key)) {
+				it.remove();
+				size--;
+				return;
 			}
 		}
 	}
 
+	// O(capacity)
 	private void enlarge() {
 		LinkedList<SimpleEntry> copy = new LinkedList();
 		MapIterator it = (MapIterator)entryIterator();
@@ -205,9 +217,13 @@ public class MyHashMap implements MyMap {
 		Iterator itc = copy.iterator();
 		while (itc.hasNext()) {
 			SimpleEntry cur = (SimpleEntry)itc.next();
-			int i = cur.hashCode() % capacity;
+			int i = position(cur.hashCode());
 			entries[i].add(cur); 
 		}
+	}
+
+	private int position(int n) {
+		return (n % capacity + capacity) % capacity;
 	}
 
 }
