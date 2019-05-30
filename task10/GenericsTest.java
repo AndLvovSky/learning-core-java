@@ -1,4 +1,5 @@
 import java.util.*;
+import java.lang.reflect.*;
 
 public class GenericsTest {
 
@@ -18,6 +19,35 @@ public class GenericsTest {
 			T cur = it.next();
 			to.add(cur);
 		}
+	}
+
+	public static <T extends Comparable> Collection<T> filter(
+		Collection<T> c, T key) {
+		Class<?> cls = c.getClass();
+		Constructor<?> cstr = null;
+		try {
+			cstr = cls.getConstructor();
+		} catch(NoSuchMethodException ex) {
+			ex.printStackTrace();
+			return null;
+		}
+		Collection<T> filtered = null;
+		try {
+			filtered = (Collection<T>)
+				(cstr.newInstance(new Object[] {}));
+		} catch(InstantiationException|IllegalAccessException
+			|InvocationTargetException ex) {
+			ex.printStackTrace();
+			return null;
+		}
+		Iterator<T> it = c.iterator();
+		while (it.hasNext()) {
+			T cur = it.next();
+			if (cur.compareTo(key) > 0) {
+				filtered.add(cur);
+			}
+		}
+		return filtered;
 	}
 
 	private static void testArrToColl() {
@@ -73,9 +103,22 @@ public class GenericsTest {
 		copyAll(rapp, rapp);
 	}
 
+	private static void testFilter() {
+		ArrayList<Integer> list1 = new ArrayList<>();
+		list1.add(1);
+		list1.add(4);
+		list1.add(6);
+		list1.add(8);
+		list1.add(14);
+		ArrayList<Integer> list2 = 
+			(ArrayList<Integer>)filter(list1, new Integer(5));
+		System.out.println(Arrays.toString(list2.toArray()));
+	}
+
 	public static void main(String[] args) {
 		testArrToColl();
 		testCopyAll();
+		testFilter();
 	}
 
 }
