@@ -21,7 +21,8 @@ public class GenericsTest {
 		}
 	}
 
-	public static <T extends Comparable> Collection<T> filter(
+	@SuppressWarnings("unchecked")
+	public static <T extends Comparable<T>> Collection<T> filter(
 		Collection<T> c, T key) {
 		Class<?> cls = c.getClass();
 		Constructor<?> cstr = null;
