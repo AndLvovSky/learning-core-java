@@ -11,6 +11,7 @@ public class GenericsTest {
 
 	public static <T> void copyAll(
 		Collection<? extends T> from, Collection<? super T> to) {
+		if (from == null || to == null) return;
 		to.clear();
 		Iterator<? extends T> it = from.iterator();
 		while (it.hasNext()) {
@@ -35,11 +36,22 @@ public class GenericsTest {
 			return String.valueOf(n);
 		}
 	}
+
 	private static class B extends A {
 		public B(int n) {
 			super(n);
 		}
 	}
+
+	private static class Fruit {}
+
+	private static class Apple extends Fruit {}
+
+	private static class Orange extends Fruit {}
+
+	private static class RedApple extends Apple {}
+
+	private static class Melon extends Fruit {}
 
 	private static void testCopyAll() {
 		ArrayList<B> list1 = new ArrayList<>();
@@ -49,6 +61,16 @@ public class GenericsTest {
 		ArrayList<A> list2 = new ArrayList<>();
 		copyAll(list1, list2);
 		System.out.println(Arrays.toString(list2.toArray()));
+
+		List<Fruit> fr = null;
+		List<Apple> app = null;
+		List<Orange> or = null;
+		List<RedApple> rapp = null;
+		List<Melon> mel = null;
+		copyAll(or, fr);
+		copyAll(rapp, fr);
+		copyAll(rapp, app);
+		copyAll(rapp, rapp);
 	}
 
 	public static void main(String[] args) {
