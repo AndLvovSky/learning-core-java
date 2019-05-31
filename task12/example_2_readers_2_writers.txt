@@ -1,0 +1,43 @@
+1. Readers start after 4 sec (buffersize = 3)
+Thread WT1 is offering 10
+Thread WT0 is offering 1
+Thread's WT1 offer of 10 is completed
+Thread's WT0 offer of 1 is completed
+Thread WT1 is offering 18
+Thread's WT1 offer of 18 is completed
+Thread WT1 is offering 19
+Thread WT0 is offering 17
+Thread RT0 is polling next number
+Thread RT1 is polling next number
+Thread RT0 polled number 10
+Thread's WT1 offer of 19 is completed
+Thread RT1 polled number 1
+Thread's WT0 offer of 17 is completed
+Thread WT0 is offering 7
+Thread RT1 is polling next number
+Thread RT1 polled number 18
+Thread's WT0 offer of 7 is completed
+Thread WT0 is offering 13
+Thread WT1 is offering 5
+Thread RT0 is polling next number
+Thread RT0 polled number 19
+Thread's WT0 offer of 13 is completed
+Thread RT0 is polling next number
+Thread RT0 polled number 17
+Thread's WT1 offer of 5 is completed
+Thread WT1 is offering 3
+Thread RT1 is polling next number
+Thread RT1 polled number 7
+Thread's WT1 offer of 3 is completed
+Thread RT0 is polling next number
+Thread RT0 polled number 13
+Thread WT0 is offering 19
+Thread's WT0 offer of 19 is completed
+Thread RT0 is polling next number
+Thread RT0 polled number 5
+Thread RT1 is polling next number
+Thread RT1 polled number 3
+Thread RT0 is polling next number
+Thread RT0 polled number 19
+Thread RT1 is polling next number
+Thread RT0 is polling next number

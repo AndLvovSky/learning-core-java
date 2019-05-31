@@ -1,0 +1,68 @@
+1. Start at the same time (buffersize = 4)
+Thread WT0 is offering 15
+Thread RT0 is polling next number
+Thread RT0 polled number 15
+Thread's WT0 offer of 15 is completed
+Thread WT0 is offering 14
+Thread's WT0 offer of 14 is completed
+Thread RT0 is polling next number
+Thread RT0 polled number 14
+Thread WT0 is offering 5
+Thread's WT0 offer of 5 is completed
+Thread RT0 is polling next number
+Thread RT0 polled number 5
+Thread RT0 is polling next number
+Thread WT0 is offering 2
+Thread's WT0 offer of 2 is completed
+Thread RT0 polled number 2
+Thread WT0 is offering 8
+Thread's WT0 offer of 8 is completed
+Thread RT0 is polling next number
+Thread RT0 polled number 8
+Thread RT0 is polling next number
+
+2. The Reader starts after 3 sec (buffersize = 4)
+Thread WT0 is offering 6
+Thread's WT0 offer of 6 is completed
+Thread WT0 is offering 8
+Thread's WT0 offer of 8 is completed
+Thread WT0 is offering 7
+Thread's WT0 offer of 7 is completed
+Thread WT0 is offering 10
+Thread's WT0 offer of 10 is completed
+Thread RT0 is polling next number
+Thread RT0 polled number 6
+Thread WT0 is offering 14
+Thread's WT0 offer of 14 is completed
+Thread RT0 is polling next number
+Thread RT0 polled number 8
+Thread RT0 is polling next number
+Thread RT0 polled number 7
+Thread RT0 is polling next number
+Thread RT0 polled number 10
+Thread RT0 is polling next number
+Thread RT0 polled number 14
+Thread RT0 is polling next number
+
+3. The Reader starts after 4 sec (buffersize = 3)
+Thread WT0 is offering 5
+Thread's WT0 offer of 5 is completed
+Thread WT0 is offering 16
+Thread's WT0 offer of 16 is completed
+Thread WT0 is offering 6
+Thread's WT0 offer of 6 is completed
+Thread WT0 is offering 10
+Thread RT0 is polling next number
+Thread's WT0 offer of 10 is completed
+Thread RT0 polled number 5
+Thread WT0 is offering 6
+Thread RT0 is polling next number
+Thread RT0 polled number 16
+Thread's WT0 offer of 6 is completed
+Thread RT0 is polling next number
+Thread RT0 polled number 6
+Thread RT0 is polling next number
+Thread RT0 polled number 10
+Thread RT0 is polling next number
+Thread RT0 polled number 6
+Thread RT0 is polling next number
