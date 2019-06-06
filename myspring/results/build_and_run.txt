@@ -1,0 +1,2 @@
+javac -d build $(find . -name *.java)
+java -cp "build;src/test/resources" myspring.parser.XmlParserTest "small.xml"
