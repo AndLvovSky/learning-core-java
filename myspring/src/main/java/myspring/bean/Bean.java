@@ -9,7 +9,7 @@ public class Bean {
 
 	public final String cls;
 
-	public String ctrArg;
+	public ConstructorArgument ctrArg;
 
 	public List<Property> properties = new ArrayList<>();
 
@@ -20,6 +20,18 @@ public class Bean {
 
 	public void addProperty(Property property) {
 		properties.add(property);
+	}
+
+	public String toString() {
+		String res = String.format("bean[id=%s, class=%s]\n", id, cls);
+		if (ctrArg != null) {
+			res += ctrArg.toString() + "\n";
+		}
+		for (Property property : properties) {
+			res += property.toString() + "\n";
+		}
+		res += "[end bean]\n";
+		return res;
 	}
 
 }

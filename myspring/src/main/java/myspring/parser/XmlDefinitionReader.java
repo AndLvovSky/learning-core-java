@@ -15,8 +15,8 @@ public class XmlDefinitionReader {
 	public XmlDefinition parse() {
 		XmlDefinition def = new XmlDefinition();
 		String xml = readXml();
-		XmlTag beansTag = XmlParser.parseTag(xml); 
-		if (beansTag == null || beansTag.name != "beans") return null;
+		XmlTag beansTag = XmlParser.parseTag(xml);
+		if (beansTag == null || !beansTag.name.equals("beans")) return null;
 		try {
 			for (XmlTag beanTag : beansTag.tags) {
 				Bean bean = parseBean(beanTag);
@@ -43,7 +43,7 @@ public class XmlDefinitionReader {
 	}
 
 	private Bean parseBean(XmlTag beanTag) {
-		if (beanTag.name != "bean" || 
+		if (!beanTag.name.equals("bean") || 
 			!beanTag.hasAttribute("id") || 
 			!beanTag.hasAttribute("class")) {
 			throw new RuntimeException();
@@ -52,14 +52,31 @@ public class XmlDefinitionReader {
 		String cls = beanTag.getAttributeValue("class");
 		Bean bean = new Bean(id, cls);
 		for (XmlTag tag : beanTag.tags) {
-			if (tag.name == "constructor-arg") {
-				bean.ctrArg = tag.getAttributeValue("constructor-arg");
-			} else if (tag.name == "property") {
+			if (tag.name.equals("constructor-arg")) {
+				bean.ctrArg = parseConstructorArgument(tag); 
+			} else if (tag.name.equals("property")) {
 				Property property = parseProperty(tag);
 				bean.addProperty(property);
 			}
 		}
 		return bean;
+	}
+
+	private ConstructorArgument parseConstructorArgument(XmlTag ctrArgTag) {
+		if (!(ctrArgTag.hasAttribute("value") ^ 
+			ctrArgTag.hasAttribute("ref"))) {
+			throw new RuntimeException();
+		}
+		String value;
+		boolean isRef;
+		if (ctrArgTag.hasAttribute("value")) {
+			value = ctrArgTag.getAttributeValue("value");
+			isRef = false;
+		} else {
+			value = ctrArgTag.getAttributeValue("ref");
+			isRef = true;
+		}
+		return new ConstructorArgument(value, isRef);
 	}
 
 	private Property parseProperty(XmlTag propertyTag) {

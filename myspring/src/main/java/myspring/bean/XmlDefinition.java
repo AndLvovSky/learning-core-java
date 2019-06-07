@@ -20,4 +20,13 @@ public class XmlDefinition {
 		return null;
 	}
 
+	public String toString() {
+		String res = "Xml definition start\n";
+		for (Bean bean : beans) {
+			res += bean.toString();
+		}
+		res += "Xml definition end\n";
+		return res;
+	}
+
 }

@@ -37,7 +37,7 @@ public class XmlTag {
 
 	private XmlAttribute getAttribute(String name) {
 		for (XmlAttribute attr : attrs) {
-			if (attr.name == name) {
+			if (attr.name.equals(name)) {
 				return attr;
 			}
 		}

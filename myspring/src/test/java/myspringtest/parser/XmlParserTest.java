@@ -24,16 +24,7 @@ public class XmlParserTest {
 	}
 
 	private static String readXml(String fileName) {
-		ClassLoader classLoader = 
-			Thread.currentThread().getContextClassLoader();
-		System.out.println(fileName);
-        URL url = classLoader.getResource(fileName);
-        try {
-        	fileName = URLDecoder.decode(url.getPath(), "UTF-8");
-        } catch(Exception ex) {
-        	ex.printStackTrace();
-        }
-        System.out.println(fileName);
+		fileName = getFilename(fileName);
         String xml = "";
         try(BufferedReader reader = 
 			new BufferedReader(new FileReader(fileName))) {
@@ -45,6 +36,18 @@ public class XmlParserTest {
 			ex.printStackTrace();
 		}
 		return xml;
+	}
+
+	public static String getFilename(String fileName) {
+		ClassLoader classLoader = 
+			Thread.currentThread().getContextClassLoader();
+        URL url = classLoader.getResource(fileName);
+        try {
+        	fileName = URLDecoder.decode(url.getPath(), "UTF-8");
+        } catch(Exception ex) {
+        	ex.printStackTrace();
+        }
+        return fileName;
 	}
 
 }
