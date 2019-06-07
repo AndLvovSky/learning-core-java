@@ -1,0 +1,21 @@
+Xml definition start
+bean[id=greetingService, class=myspringtest.pojo.GreetingService]
+constructor-argument value=Hello World!
+[end bean]
+Xml definition end
+
+Xml definition start
+bean[id=b1, class=myspringtest.pojo.A]
+[end bean]
+bean[id=b2, class=myspringtest.pojo.A]
+[end bean]
+bean[id=b3, class=myspringtest.pojo.B]
+constructor-argument value=It's ok
+property[name=a1, ref=b1]
+[end bean]
+bean[id=b4, class=myspringtest.pojo.B]
+constructor-argument ref=b1
+property[name=s, value=String]
+property[name=a2, ref=b2]
+[end bean]
+Xml definition end

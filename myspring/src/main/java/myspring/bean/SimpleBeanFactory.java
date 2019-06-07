@@ -36,7 +36,14 @@ public class SimpleBeanFactory implements BeanFactory {
 				Constructor<?> ctr = cls.getConstructor(argCls);
 				targ = ctr.newInstance(argCls.cast(ctrArgObj));
 			} catch(Exception ex) {
-				ex.printStackTrace();
+				return null;
+			}
+		} else {
+			try {
+				Class<?> cls = Class.forName(bean.cls);
+				Constructor<?> ctr = cls.getConstructor();
+				targ = ctr.newInstance();
+			} catch(Exception ex) {
 				return null;
 			}
 		}
@@ -57,15 +64,16 @@ public class SimpleBeanFactory implements BeanFactory {
 				Class<?> argCls = objToSet.getClass();
 				setter.invoke(cls.cast(targ), argCls.cast(objToSet));
 			} catch(Exception ex) {
-				ex.printStackTrace();
 				return null;
 			}
 		}
+		obj.put(id, targ);
 		return targ;
 	}
 
+	@SuppressWarnings("unchecked")
 	public <T> T getBean(String id, Class<T> type) {
-		return null;
+		return (T)getBean(id);
 	}
 
 }

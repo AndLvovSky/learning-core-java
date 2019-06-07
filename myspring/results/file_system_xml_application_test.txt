@@ -1,0 +1,5 @@
+Hello World!
+{A 0}
+{A 1}
+{B s=It's ok, a1={A 0}, a2=null}
+{B s=String, a1={A 0}, a2={A 1}}
