@@ -1,4 +1,4 @@
-package myspring.parser;
+package myspringtest.parser;
 
 import myspring.parser.*;
 import java.io.BufferedReader;
@@ -10,11 +10,12 @@ import java.net.URLDecoder;
 public class XmlParserTest {
 
 	public static void main(String[] args) {
-		testSmall();
+		testXml("small.xml");
+		testXml("medium.xml");
 	}
 
-	private static void testSmall() {
-		String xml = readXml("small.xml");
+	private static void testXml(String fileName) {
+		String xml = readXml(fileName);
 		System.out.println("before:");
 		System.out.println(xml + "\n");
 		XmlTag xmlTag = XmlParser.parseTag(xml);

@@ -38,13 +38,22 @@ public class XmlParser {
 		List<XmlAttribute> attrs = parseAttrs(nameCut.last);
 		if (attrs == null) return null;
 		tag.attrs = attrs;
-		xml = xml.replace(xml.substring(l1, r1 + 1), "");
-		if (onlyAttr) return new XmlCut(tag, "");
-		int l2 = xml.lastIndexOf("</");
-		if (l2 == -1) return null;
-		int r2 = xml.lastIndexOf(">");
-		if (r2 == -1) return null;
-		xml = xml.replace(xml.substring(l2, r2 + 1), "");
+		xml = xml.replaceFirst(xml.substring(l1, r1 + 1), "");
+		if (onlyAttr) return new XmlCut(tag, xml);
+		int l2, r2, i = 0;
+		while (true) {
+			l2 = xml.indexOf("</", i);
+			if (l2 == -1) return null;
+			r2 = xml.indexOf(">", l2);
+			if (r2 == -1) return null;
+			if (xml.substring(l2 + 2, r2).trim().equals(name)) {
+				break;
+			} else {
+				i = r2 + 1;
+			}
+		}
+		String last = xml.substring(r2 + 1, xml.length());
+		xml = xml.replaceFirst(xml.substring(l2, xml.length()), "");
 		List<XmlTag> tags = new ArrayList<>();
 		while (true) {
 			XmlCut cut = cutFirstTag(xml);
@@ -53,7 +62,7 @@ public class XmlParser {
 			xml = cut.last;
 		}
 		tag.tags = tags;
-		return new XmlCut(tag, xml);
+		return new XmlCut(tag, last);
 	}
 
 	private static String removeVersionTag(String xml) {

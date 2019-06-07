@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="b1" class="myspringtest.pojo.A" />
+	<bean id="b2" class="myspringtest.pojo.B">
+		<constructor-arg value="It's ok" />
+		<property name="a1" ref="b1" />
+		<!-- collaborators and configuration for this bean go here -->
+	</bean>
+	<bean id="b3" class="myspringtest.pojo.B">
+		<constructor-arg ref="b1" />
+		<property name="s" value="String" />
+		<property name="a1" ref="b1" />
+		<!-- collaborators and configuration for this bean go here -->
+	</bean>
+	<!-- more bean definitions go here -->
+</beans>
