@@ -13,7 +13,7 @@ public class XmlDefinition {
 
 	public Bean getBean(String id) {
 		for (Bean bean : beans) {
-			if (bean.id == id) {
+			if (bean.id.equals(id)) {
 				return bean;
 			}
 		}
